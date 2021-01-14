@@ -13,3 +13,10 @@ User.create([
     {username: "Luchentio", password:"123456"},
     {username: "Tester", password:"123456"},
 ]);
+
+Bench.destroy_all
+Bench.create([
+    {description: "Nice, and warm spot.", lat: 37.560270718096135, lng: -77.47435531824333},
+    {description: "Nice View!", lat: 37.55830278715352, lng: -77.47276612114392},
+    {description: "Good food close-by.", lat: 37.55933613917545, lng: -77.4765104890244}
+]);
