@@ -18,10 +18,10 @@ export const logoutCurrentUser = () => {
     }
 }
 
-export const receiveErrors = (errors) => {
+export const receiveErrors = (user) => {
     return {
         type: RECEIVE_ERRORS,
-        errors
+        user
     }
 }
 

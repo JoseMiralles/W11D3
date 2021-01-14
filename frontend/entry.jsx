@@ -1,16 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
+import Root from "./root";
 import configureStore from "./store/store";
+
+import * as sessionActions from "./actions/session_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
 
     const store = configureStore();
-    window.store = store;
+
+    if (process.env.NODE_ENV !== "production"){
+        // Only transpile this when webpack is NOT in production mode.
+        window.store = store;
+        window.sessionActions = sessionActions;
+    }
 
     const root = document.getElementById("root");
 
     ReactDOM.render(
-        <h1>Hi</h1>,
+        <Root store={store} />,
         root
     );
 
