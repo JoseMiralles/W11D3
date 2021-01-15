@@ -22,6 +22,7 @@ gem "pry-rails"
 gem "annotate"
 gem "bcrypt"
 gem "jquery-rails"
+gem "figaro"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
