@@ -7,6 +7,14 @@ export const fetchBenches = ( filters ) => {
     });
 }
 
+export const createBench = (benchForm) => {
+    return $.ajax({
+        method: "POST",
+        url: "/api/benches",
+        data: benchForm
+    });
+}
+
 // Query to test index filter
 // $.ajax({
 //     method: "GET",
