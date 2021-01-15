@@ -19,6 +19,7 @@ export default class BenchMap extends React.Component {
         this.map = new google.maps.Map(mapNode, mapOptions);
         this.markerManager = new MarkerManager(this.map);
         this.markerManager.updateMarkers(this.props.benches);
+        console.log(this.map.getBounds());
     }
 
     componentDidUpdate(){

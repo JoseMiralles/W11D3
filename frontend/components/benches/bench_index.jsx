@@ -8,6 +8,9 @@ export default class BenchIndex extends React.Component {
     }
 
     componentDidMount(){
+        // const filters = {
+        //     lat: 
+        // }
         this.props.fetchBenches();
     }
 
