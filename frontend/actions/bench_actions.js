@@ -9,9 +9,15 @@ export const receiveBenches = (benches) => {
     }
 }
 
-export const fetchBenchesAction = () => {
+const defaultFilters = {
+    bounds: {
+        southWest: { lat: 37.554957226606774, lng: -77.47526029602743 },
+        northEast: { lat: 37.56070650091237, lng: -77.46843228268627 }
+    }
+};
+export const fetchBenchesAction = (filters) => {
     return (dispatch) => {
-        return fetchBenches().then((benches) => {
+        return fetchBenches(filters).then((benches) => {
             return dispatch( receiveBenches(benches) );
         });
     }

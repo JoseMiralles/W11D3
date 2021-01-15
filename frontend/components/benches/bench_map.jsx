@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { updateBounds } from "../../actions/filter_actions";
 
 import MarkerManager from "../../util/marker_manager";
 
@@ -19,7 +20,20 @@ export default class BenchMap extends React.Component {
         this.map = new google.maps.Map(mapNode, mapOptions);
         this.markerManager = new MarkerManager(this.map);
         this.markerManager.updateMarkers(this.props.benches);
-        console.log(this.map.getBounds());
+
+        window.map = this.map;
+        
+        this.map.addListener("idle", () => {
+            // Format the bounds as needed by "updateBounds()"
+            const bounds = this.map.getBounds();
+            const northEast = bounds.getNorthEast();
+            const southWest = bounds.getSouthWest();
+            const formattedBounds = {
+                northEast: { lat: northEast.lat(), lng: northEast.lng() },
+                southWest: { lat: southWest.lat(), lng: southWest.lng() }
+            }
+            this.props.updateFilter("bounds", formattedBounds);
+        });
     }
 
     componentDidUpdate(){

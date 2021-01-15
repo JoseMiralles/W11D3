@@ -12,7 +12,7 @@ export default class Search extends React.Component {
     render(){
         return(
             <div>
-                <BenchMap benches={this.props.benches} />
+                <BenchMap benches={this.props.benches} updateFilter={this.props.updateFilter} />
                 <BenchIndex benches={this.props.benches} fetchBenches={this.props.fetchBenches} />
             </div>
         );

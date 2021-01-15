@@ -7,7 +7,7 @@ export const fetchBenches = ( filters ) => {
     });
 }
 
-// Test filter
+// Query to test index filter
 // $.ajax({
 //     method: "GET",
 //     url: "/api/benches",
