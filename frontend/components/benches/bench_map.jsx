@@ -1,13 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { updateBounds } from "../../actions/filter_actions";
+import { withRouter } from "react-router-dom";
 
+import { updateBounds } from "../../actions/filter_actions";
 import MarkerManager from "../../util/marker_manager";
 
-export default class BenchMap extends React.Component {
+class BenchMap extends React.Component {
 
     constructor(props){
         super(props);
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e){
+        this.props.history.push({
+            pathname: "benches/new",
+            search: `lat=${e.latLng.lat()}&lng=${e.latLng.lng()}`
+        });
     }
 
     componentDidMount(){
@@ -34,6 +44,8 @@ export default class BenchMap extends React.Component {
             }
             this.props.updateFilter("bounds", formattedBounds);
         });
+
+        this.map.addListener("click", this.handleClick);
     }
 
     componentDidUpdate(){
@@ -47,3 +59,5 @@ export default class BenchMap extends React.Component {
     }
 
 }
+
+export default withRouter(BenchMap);

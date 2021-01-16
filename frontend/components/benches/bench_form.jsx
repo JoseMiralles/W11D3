@@ -8,8 +8,8 @@ export default class BenchForm extends React.Component {
         this.state = {
             description: "",
             seating: 1,
-            lat: 0,
-            lng: 0
+            lat: props.lat ? props.lat : "",
+            lng: props.lng ? props.lng : ""
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -41,19 +41,27 @@ export default class BenchForm extends React.Component {
                 <br/><br/>
 
                 <label> seats:<br/>
-                    <input onChange={this.handleChange("seating")} type="nuber" min="1" max="10"/>
+                    <input onChange={this.handleChange("seating")} type="number" min="1" max="10"/>
                 </label>
 
                 <br/><br/>
 
                 <label> latitude:<br/>
-                    <input onChange={this.handleChange("lat")} type="nuber" min="1" max="10"/>
+                    <input
+                    value={this.state.lat}
+                    onChange={this.handleChange("lat")}
+                    type="number"
+                    disabled={this.props.lat ? true : false}/>
                 </label>
 
                 <br/><br/>
 
                 <label> longitude:<br/>
-                    <input onChange={this.handleChange("lng")} type="nuber" min="1" max="10"/>
+                    <input
+                    value={this.state.lng}
+                    onChange={this.handleChange("lng")}
+                    type="number"
+                    disabled={this.props.lng ? true : false}/>
                 </label>
 
                 <br/><br/>
