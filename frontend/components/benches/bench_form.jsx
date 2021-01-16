@@ -18,7 +18,11 @@ export default class BenchForm extends React.Component {
     handleClick(e){
         e.preventDefault();
         const benchFormData = { bench: Object.assign({}, this.state) } 
-        this.props.createBench( benchFormData );
+        this.props.createBench( benchFormData ).then(() => {
+            this.props.history.push({
+                pathname: "/"
+            });
+        });
     }
 
     handleChange(key){
